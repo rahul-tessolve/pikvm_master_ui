@@ -1,81 +1,160 @@
-<div class="row g-0 app-auth-wrapper">
-    <div class="col-12 col-md-7 col-lg-6 auth-main-col text-center p-5">
-        <div class="d-flex flex-column align-content-end">
-            <div class="app-auth-body mx-auto">
-                <div class="app-auth-branding mb-4"><a class="app-logo" href="index.html"><img class="logo-icon me-2"
-                            src="assets/images/app-logo.svg" alt="logo"></a></div>
-                <h2 class="auth-heading text-center mb-4">Sign up to Portal</h2>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-8">
+            <div class="app-content pt-3 p-md-3 p-lg-4">
+                <div class="container-xl">
+                    <h2 class="app-page-title">Register to Portal</h2>
+                    <hr class="mb-1">
+                    <div class="row g-3 mb-4 align-items-center justify-content-between">
+                        <div class="col-md-8">
+                            <div class="app-card app-card-settings shadow-sm p-4">
+                                <div class="app-card-body">
+                                    <form class="auth-form auth-signup-form" [formGroup]="registerForm"
+                                        (ngSubmit)="onSubmit()" novalidate>
+                                        <div class="mb-3">
+                                            <label for="signup-email" style="font-weight: bold;">First Name</label>
+                                            <input id="signup-fname" name="signup-fname" type="text"
+                                                class="form-control signup-name small-placeholder"
+                                                placeholder="Enter your first name" required="required"
+                                                formControlName="first_name">
+                                            <div *ngIf="registerForm?.get('first_name')?.invalid && (registerForm?.get('first_name')?.dirty || registerForm?.get('first_name')?.touched)"
+                                                class="text-danger">First name is required</div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="signup-email" style="font-weight: bold;">Last Name</label>
+                                            <input id="signup-lname" name="signup-lname" type="text"
+                                                class="form-control signup-name small-placeholder"
+                                                placeholder="Enter your last name" required="required"
+                                                formControlName="last_name">
+                                            <div *ngIf="registerForm?.get('last_name')?.invalid && (registerForm?.get('last_name')?.dirty || registerForm?.get('last_name')?.touched)"
+                                                class="text-danger">Last name is required</div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="signup-email" style="font-weight: bold;">Username</label>
+                                            <input id="signup-username" name="signup-lname" type="text"
+                                                class="form-control signup-name small-placeholder"
+                                                placeholder="Create an username" required="required"
+                                                formControlName="username">
+                                            <div *ngIf="registerForm?.get('username')?.invalid && (registerForm?.get('username')?.dirty || registerForm?.get('username')?.touched)"
+                                                class="text-danger">Username is required</div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="signup-email" style="font-weight: bold;">Email</label>
+                                            <input id="signup-email" name="signup-email" type="email"
+                                                class="form-control signup-email small-placeholder"
+                                                placeholder="Enter a valid Email" required="required"
+                                                formControlName="email">
+                                            <div *ngIf="registerForm?.get('email')?.invalid && (registerForm?.get('email')?.dirty || registerForm?.get('email')?.touched)"
+                                                class="text-danger">Invalid email</div>
+                                        </div>
+                                        
+                                            
+                                                
+                                                <!-- <div class="input-with-icon">
+                                                    <input id="signup-password1" name="signup-password" [type]="fieldTextType ? 'text' : 'password'"
+                                                        class="form-control signup-password small-placeholder" placeholder="Create new password"
+                                                        required="required" formControlName="password1">
+                                                    <i class="fa toggle-password" (click)="toggleFieldTextType()"
+                                                    [ngClass]="{
+                                                    'fa-eye-slash': !fieldTextType,
+                                                    'fa-eye': fieldTextType
+                                                    }" ></i>
+                                                </div>     -->
+                                                
+                                                        <!-- <i class="fas fa-eye" *ngIf="show" (click)="password()"></i>
+                                                        <i class="fas fa-eye-slash" *ngIf="!show" (click)="password()"></i> -->
+                                                    <!-- <i class="fa toggle-password"
+                                                    [ngClass]="{
+                                                    'fa-solid fa-eye-slash': !fieldTextType, 
+                                                    'fa-solid fa-eye': fieldTextType,
+                                                    }" (click)="toggleFieldTextType()"></i> -->
+                                                
 
-                <div class="auth-form-container text-start mx-auto">
-                    <form class="auth-form auth-signup-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()"
-                        novalidate>
-                        <div class="email mb-3">
-                            <label class="sr-only" for="signup-email">Your Name</label>
-                            <input id="signup-name" name="signup-name" type="text" class="form-control signup-name"
-                                placeholder="Full name" required="required" formControlName="name">
-                        </div>
-                        <div class="email mb-3">
-                            <label class="sr-only" for="signup-email">Your Email</label>
-                            <input id="signup-email" name="signup-email" type="email" class="form-control signup-email"
-                                placeholder="Email" required="required" formControlName="email">
-                        </div>
-                        <div class="password mb-3">
-                            <label class="sr-only" for="signup-password">Password</label>
-                            <input id="signup-password" name="signup-password" type="password"
-                                class="form-control signup-password" placeholder="Create a password" required="required"
-                                formControlName="password">
-                        </div>
-                        <div class="extra mb-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="RememberPassword">
-                                <label class="form-check-label" for="RememberPassword">
-                                    I agree to Portal's <a href="#" class="app-link">Terms of Service</a> and <a
-                                        href="#" class="app-link">Privacy Policy</a>.
-                                </label>
+                                            <!-- <div class="password mb-3">
+                                                <div class="password-container">
+                                                    <label for="signup-password1" style="font-weight: bold;">Create Password</label>
+                                                    <div class="input-with-icon">
+                                                        <input id="signup-password1" name="signup-password" [type]="fieldTextType ? 'text' : 'password'"
+                                                            class="form-control signup-password small-placeholder" placeholder="Create new password"
+                                                            required="required" formControlName="password">
+                                                        <button type="button" class="btn btn-default btn-sm" (click)="toggleFieldTextType()">
+                                                            {{fieldTextType ? 'Show' : 'Hide'}}
+                                                        </button>
+                                                    </div>
+                                            
+                                                    <div class="text-danger"
+                                                        *ngIf="registerForm.get('password')?.invalid && (registerForm?.get('password')?.dirty || registerForm.get('password')?.touched)">
+                                                        Password is required.
+                                                    </div>
+                                                    <div class="text-danger"
+                                                        *ngIf="registerForm.get('password')?.errors?.['minlength'] && registerForm.get('password')?.touched">
+                                                        Password must be at least 8 characters long.
+                                                    </div>
+                                                    <div class="text-danger"
+                                                        *ngIf="registerForm.get('password')?.errors?.['pattern'] && registerForm.get('password')?.touched">
+                                                        Password must contain at least one uppercase letter, one lowercase
+                                                        letter, one number, and one special character.
+                                                    </div>
+                                                </div>
+                                            </div> -->
+                                            <div class="password mb-3">
+                                                <div class="password-container">
+                                                    <label for="signup-password1" style="font-weight: bold;">Create Password</label>
+                                                    <div class="input-with-icon">
+                                                        <input id="signup-password1" name="signup-password" [type]="fieldTextType ? 'text' : 'password'"
+                                                            class="form-control signup-password small-placeholder" placeholder="Create new password"
+                                                            required="required" formControlName="password">
+                                                        <button type="button" class="btn btn-default btn-sm toggle-button" (click)="toggleFieldTextType()">{{fieldTextType ? 'Show' :
+                                                            'Hide'}}
+                                                            <!-- <i class="fa" [ngClass]="[ fieldTextType ? 'fa-eye' : 'fa-eye-slash' ]"></i> -->
+                                                            <!-- <i class="fa" [class.fa-eye]="fieldTextType" [class.fa-eye-slash]="!fieldTextType"></i> -->
+                                                            <!-- <i class="fa" [ngClass]="{'fa-eye': fieldTextType, 'fa-eye-slash': !fieldTextType}"></i> -->
+                                                        </button>
+                                                    </div>
+                                                    <div class="text-danger"
+                                                        *ngIf="registerForm.get('password')?.invalid && (registerForm?.get('password')?.dirty || registerForm.get('password')?.touched)">
+                                                        Password is required.
+                                                    </div>
+                                                    <div class="text-danger"
+                                                        *ngIf="registerForm.get('password')?.errors?.['minlength'] && registerForm.get('password')?.touched">
+                                                        Password must be at least 8 characters long.
+                                                    </div>
+                                                    <div class="text-danger"
+                                                        *ngIf="registerForm.get('password')?.errors?.['pattern'] && registerForm.get('password')?.touched">
+                                                        Password must contain at least one uppercase letter, one lowercase
+                                                        letter, one number, and one special character.
+                                                    </div>
+                                                </div>
+                                            </div>                                            
+                                        <div class="password mb-3">
+                                            <label for="signup-password2" style="font-weight: bold;">Confirm
+                                                Password</label>
+                                            <div class="input-with-icon">
+                                                <input id="signup-password2" name="signup-password" [type]="repeatFieldTextType? 'text' : 'password'"
+                                                    class="form-control signup-password small-placeholder" placeholder="Re-enter your password" required="required" formControlName="password2">
+                                                <button type="button" class="btn btn-default btn-sm" (click)="toggleRepeatFieldTextType()">{{repeatFieldTextType ? 'Show' :
+                                                    'Hide'}}</button>
+                                            </div>
+                                            <div class="text-danger" *ngIf="registerForm.errors?.['PasswordNoMatch']">
+                                                Password doesn't match.
+                                            </div>
+                                        </div>
+                                        <div class="text-center" style="font-weight: bold;">
+                                            <button type="submit" class="btn app-btn-primary w-100 theme-btn mx-auto"
+                                                [disabled]="registerForm.invalid">Sign Up</button>
+                                        </div>
+                                    </form><!--//auth-form-->
+                                    <div class="auth-option text-center pt-5">Existing User? Login <a class="text-link"
+                                            [routerLink]="['/login']">here</a>.</div>
+                                </div>
                             </div>
-                        </div><!--//extra-->
-
-                        <div class="text-center">
-                            <button type="submit" class="btn app-btn-primary w-100 theme-btn mx-auto"
-                                [disabled]="registerForm.invalid">Sign Up</button>
-                        </div>
-                    </form><!--//auth-form-->
-
-                    <div class="auth-option text-center pt-5">Already have an account? <a class="text-link"
-                        [routerLink]="['/login']">Log in</a></div>
-                </div><!--//auth-form-container-->
-
-
-
-            </div><!--//auth-body-->
-
-            <footer class="app-auth-footer">
-                <div class="container text-center py-3">
-                    <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
-                    <small class="copyright">Designed with <span class="sr-only">love</span><i class="fas fa-heart"
-                            style="color: #fb866a;"></i> by <a class="app-link" href="http://themes.3rdwavemedia.com"
-                            target="_blank">Xiaoying Riley</a> for developers</small>
-
-                </div>
-            </footer><!--//app-auth-footer-->
-        </div><!--//flex-column-->
-    </div><!--//auth-main-col-->
-    <div class="col-12 col-md-5 col-lg-6 h-100 auth-background-col">
-        <div class="auth-background-holder">
-        </div>
-        <div class="auth-background-mask"></div>
-        <div class="auth-background-overlay p-3 p-lg-5">
-            <div class="d-flex flex-column align-content-end h-100">
-                <div class="h-100"></div>
-                <div class="overlay-content p-3 p-lg-4 rounded">
-                    <h5 class="mb-3 overlay-title">Explore Portal Admin Template</h5>
-                    <div>Portal is a free Bootstrap 5 admin dashboard template. You can download and view the template
-                        license <a
-                            href="https://themes.3rdwavemedia.com/bootstrap-templates/admin-dashboard/portal-free-bootstrap-admin-dashboard-template-for-developers/">here</a>.
-                    </div>
-                </div>
-            </div>
-        </div><!--//auth-background-overlay-->
-    </div><!--//auth-background-col-->
-
-</div><!--//row-->
+                        </div><!-- container-fluid -->
+                    </div><!-- row -->
+                </div><!-- container-xl-->
+            </div><!-- app-content -->
+        </div><!-- col -->
+    </div><!-- row -->
+    <div *ngIf="registrationSuccess" class="alert alert-success">
+        User registered successfully!
+      </div>      
+</div><!-- container-fluid -->

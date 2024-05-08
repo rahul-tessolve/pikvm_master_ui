@@ -1,0 +1,122 @@
+<div class="app-content pt-3 p-md-3 p-lg-4">
+    <div class="container-xl">
+ 
+        <div class="row g-3 mb-4 align-items-center justify-content-between">
+            <div class="col-auto">
+                <h1 class="app-page-title mb-0">Device List</h1>
+            </div>
+            <div class="col-auto">
+                <div class="page-utilities">
+                    <div class="row g-2 justify-content-start justify-content-md-end align-items-center">
+                        <div class="col-auto">
+                            <div class="input-group">
+                                <input type="text" id="search-order" name="searchorders" class="form-control search-orders"
+                                    [(ngModel)]="searchInput" placeholder="Search" (keyup.enter)="search()">
+                                <button class="btn btn-default btn-sm" type="button" (click)="search()">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
+                                        viewBox="0 0 16 16">
+                                        <path
+                                            d="M11.742 9.344a5.5 5.5 0 1 0-1.397 1.398l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85zM2 6.5a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0z" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div><!--//col-auto-->
+                        <div class="col-auto">
+ 
+                            <select class="form-select w-auto" (change)="onSearch($event)">
+                                <option selected value="all">All</option>
+                                <option value="thisWeek">This week</option>
+                                <option value="thisMonth">This month</option>
+                                <option value="lastThreeMonths">Last 3 months</option>
+ 
+                            </select>
+                        </div>
+                        <div class="col-auto">
+                            <a class="btn app-btn-secondary" href="#">
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-download me-1"
+                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
+                                    <path fill-rule="evenodd"
+                                        d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
+                                </svg>
+                                Download CSV
+                            </a>
+                        </div>
+                        <div class="col-auto">
+                            <button class="btn btn-secondary" (click)="clearFilter()">Clear Filter</button>   
+                        </div>
+                    </div><!--//row-->
+                </div><!--//table-utilities-->
+            </div><!--//col-auto-->
+        </div><!--//row-->
+ 
+        <div class="tab-pane fade show active" id="orders-all" role="tabpanel" aria-labelledby="orders-all-tab">
+            <div class="app-card app-card-orders-table shadow-sm mb-5">
+                <div class="app-card-body">
+                    <div class="table-responsive">
+                        <table class="table app-table-hover mb-0 text-left">
+                            <thead>
+                                <tr>
+                                    <th class="cell">Device IP-Address</th>
+                                    <th class="cell">Start Date
+                                        <!-- <button type="button" class="btn btn-link" (click)="openDateRanges()"></button> -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16" (click)="openDateRanges()">
+                                            <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5"/>
+                                          </svg>
+                                          <!-- <button class="btn btn-secondary" (click)="clearFilter()">Clear Filter</button> -->
+                                    </th>
+                                    <th class="cell">Start time</th>
+                                    <th class="cell">End Date
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16" (click)="openDateRanges()">
+                                            <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5"/>
+                                          </svg>
+                                    </th>
+                                    <th class="cell">End Time</th>
+                                    <th class="cell">Username</th>
+                                    <th class="cell"></th>
+                                </tr>
+                            </thead>
+ 
+                            <tbody>
+                                <tr *ngFor="let row of rows">
+                                    <td class="cell">{{ row.device_ip}}</td>
+                                    <td class="cell">{{ row.start_date }}</td>
+                                    <td class="cell">{{ row.start_time }}</td>
+                                    <td class="cell">{{ row.end_date }}</td>
+                                    <td class="cell">{{ row.end_time }}</td>
+                                    <td class="cell"><span>{{ row.user_created }}</span></td>
+                                    <td class="cell"><a class="btn-sm app-btn-secondary" href="#">View</a></td>
+                                </tr>
+                            </tbody>
+ 
+                        </table>
+                    </div><!--//table-responsive-->
+                    <div *ngIf="isDateRangePickerOpen" class="date-range-picker">
+                        <label for="startDate">From:</label>
+                        <input type="date" id="startDate" name="startDate" [(ngModel)]="startDateRange">
+                        <label for="endDate">To:</label>
+                        <input type="date" id="endDate" name="endDate" [(ngModel)]="endDateRange">
+                        <button type="button" class="btn btn-primary" (click)="filterRowsByDateRange()">Filter</button>
+                    </div>
+ 
+                </div><!--//app-card-body-->
+            </div><!--//app-card-->
+            <nav class="app-pagination">
+                <ul class="pagination justify-content-end">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                    </li>
+                </ul>
+            </nav><!--//app-pagination-->
+ 
+        </div><!--//tab-pane-->
+ 
+    </div><!--//container-fluid-->
+</div><!--//app-content-->

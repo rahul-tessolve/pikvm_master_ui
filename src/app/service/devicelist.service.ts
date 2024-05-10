@@ -7,7 +7,7 @@ import { throwError } from 'rxjs';
 })
 
 export class DevicelistService {
-  private readonly URL= 'http://rutomatix.com/devices/';
+  private readonly URL= 'http://www.rutomatix.com/devices/';
 
   constructor(private http:HttpClient) {}
   getDevicesList(){

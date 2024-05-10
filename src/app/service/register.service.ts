@@ -7,7 +7,7 @@ import { map } from 'rxjs'
   providedIn: 'root'
 })
 export class RegisterService {
-  private readonly URL = 'http://rutomatix.com/addUser/';
+  private readonly URL = 'http://www.rutomatix.com/addUser/';
 
   constructor(private http: HttpClient) { }
 

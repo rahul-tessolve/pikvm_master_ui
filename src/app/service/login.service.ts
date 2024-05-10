@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class LoginService {
 
   // URL which returns list of JSON items (API end-point URL)
-  private readonly URL = 'http://rutomatix.com/login/';
+  private readonly URL = 'http://www.rutomatix.com/login/';
 
   constructor(private http: HttpClient) { }
 

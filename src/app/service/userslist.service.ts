@@ -6,7 +6,7 @@ import { throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class UserslistService {
-  private readonly URL= 'http://172.16.38.205/devices/';
+  private readonly URL= 'http://www.rutomatix.com/devices/';
 
   constructor(private http:HttpClient) {}
   getUsersList(){

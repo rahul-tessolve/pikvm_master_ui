@@ -7,7 +7,7 @@ import { map } from 'rxjs';
 })
 export class UseraddService {
 
-  private readonly apiUrl = 'http://172.16.38.205/addUser/';
+  private readonly apiUrl = 'http://www.rutomatix.com/addUser/';
 
   constructor(private http: HttpClient) { }
 

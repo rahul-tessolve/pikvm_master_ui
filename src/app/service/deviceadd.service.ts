@@ -7,7 +7,7 @@ import { map } from 'rxjs';
 })
 export class DeviceaddService {
 
-  private readonly apiUrl = 'http://rutomatix.com/add-device/';
+  private readonly apiUrl = 'http://www.rutomatix.com/add-device/';
 
   constructor(private http: HttpClient) { }
 

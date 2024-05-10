@@ -9,10 +9,9 @@
 .sidebar 
   background-color: rgba(26, 120, 26, 0.9)
   /* background-color: #f1f1e1 */
-  height: 120vh /* Set height to 100% of the viewport height */
-  width: 200px /* Set width of the sidebar */
   transition: transform 0.3s ease-in-out
   z-index: 9999
+  overflow-y: auto
 
 
   &.active 
@@ -41,3 +40,5 @@
   padding-top: 20px /* Adjust top padding as needed */
   padding-bottom: 5px /* Adjust bottom padding as needed */
 
+.container-fluid 
+  flex-grow: 1 /* Allow the container to grow and occupy remaining space */

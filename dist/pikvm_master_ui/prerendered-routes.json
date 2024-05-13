@@ -1,0 +1,15 @@
+{
+  "routes": [
+    "/",
+    "/about",
+    "/contact",
+    "/deviceadd",
+    "/devicelist",
+    "/editdevice",
+    "/home",
+    "/login",
+    "/register",
+    "/useradd",
+    "/userslist"
+  ]
+}
